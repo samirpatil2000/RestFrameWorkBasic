@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myaccount',
     'crispy_forms',
+    'restaccount',
+    'mypost',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,4 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 LOGIN_REDIRECT_URL='index'
 LOGIN_URL='login'
+AUTH_USER_MODEL = 'restaccount.DriverUser'
