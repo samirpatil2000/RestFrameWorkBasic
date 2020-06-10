@@ -11,3 +11,9 @@ class ListForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		exclude = [""]
+
+
+class UpdateForm(forms.ModelForm):
+	class Meta:
+		model = Post
+		exclude = ('author',)
