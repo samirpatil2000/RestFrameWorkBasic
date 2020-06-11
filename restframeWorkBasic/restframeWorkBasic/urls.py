@@ -27,4 +27,8 @@ urlpatterns = [
 
     path('login/', auth_views.LoginView.as_view(template_name='myaccount/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='myaccount/logout.html'), name='logout'),
+    # path('api-auth/', include('rest_framework.urls'))
+    path('api/v1/account/', include(('restaccount.urls', 'restprofile'), namespace='restaccount')),
+
+    path('api/v1/post/', include(('restpost.urls', 'restpost'), namespace='restpost')),
 ]
