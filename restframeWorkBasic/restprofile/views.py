@@ -12,8 +12,8 @@ from rest_framework.generics import (
 from django.http import JsonResponse
 
 from .serializers import listUserSerializer
-# from .serializers import deleteSerializer
-# from .serializers import updateSerializer
+from .serializers import deleteSerializer
+from .serializers import updateSerializer
 
 from rest_framework.response import Response
 
@@ -41,3 +41,18 @@ class ListAuthor(ListAPIView):
 
 	def get_queryset(self, *args, **kwargs):
 		return Post.objects.all().filter(author=self.request.user.id)
+
+
+class DeletePost(DestroyAPIView):
+	queryset = Post.objects.all()
+	serializer_class = deleteSerializer
+	lookup_field = 'id'
+	permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+	authentication_classes = (TokenAuthentication, SessionAuthentication)
+
+class PostUpdateAPIView(RetrieveUpdateAPIView):
+	queryset = Post.objects.all()
+	serializer_class = updateSerializer
+	lookup_field = 'id'
+	permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+	authentication_classes = (TokenAuthentication, SessionAuthentication)

@@ -13,3 +13,19 @@ class listUserSerializer(ModelSerializer):
 			'title',
 			'text',
 		]
+
+class deleteSerializer(ModelSerializer):
+	class Meta:
+		model = Post
+		fields = [
+			'id',
+		]
+
+class updateSerializer(ModelSerializer):
+	class Meta:
+		model = Post
+		fields = [
+			'category',
+			'title',
+			'text',
+		]

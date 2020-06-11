@@ -1,6 +1,9 @@
 from  .import views
-from django.conf.urls import url
+from django.urls import path,include
 
 urlpatterns = [
-	url('list/', views.ListAuthor.as_view(), name='list'),
+	path('list/', views.ListAuthor.as_view(), name='list'),
+	path('delete/<int:pk>/', views.DeletePost.as_view(), name='delete'),
+	path('edit/<int:id>/', views.PostUpdateAPIView.as_view(), name='edit'),
+
 ]
