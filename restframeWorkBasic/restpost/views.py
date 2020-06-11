@@ -9,8 +9,8 @@ from django.http import JsonResponse
 from .serializers import (
 	 addSerializer,
 	listSerializer,
-	# listCategorySerializer,
-	# showSerializer,
+	 listCategorySerializer,
+	 showSerializer,
 	)
 
 from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView, DestroyAPIView, ListAPIView, RetrieveAPIView)
@@ -42,3 +42,20 @@ class AddPost(CreateAPIView):
 
 	def perform_create(self, serializer):
 		serializer.save(author = self.request.user.id)
+
+class ShowPost(RetrieveAPIView):
+	queryset = Post.objects.all()
+	serializer_class = showSerializer
+	lookup_field = 'id'
+
+class CategoryAllAPIView(ListAPIView):
+	serializer_class = listCategorySerializer
+	queryset = Category.objects.all()
+
+
+
+class CategoryIdAPIView(ListAPIView):
+	serializer_class = listSerializer
+
+	def get_queryset(self):
+		return Post.objects.filter(category=self.kwargs['id'])

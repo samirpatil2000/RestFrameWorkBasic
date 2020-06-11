@@ -30,5 +30,7 @@ urlpatterns = [
     # path('api-auth/', include('rest_framework.urls'))
     path('api/v1/account/', include(('restaccount.urls', 'restprofile'), namespace='restaccount')),
 
+    path('api/v1/profile/', include(('restprofile.urls', 'restprofile'), namespace='restprofile')),
+
     path('api/v1/post/', include(('restpost.urls', 'restpost'), namespace='restpost')),
 ]

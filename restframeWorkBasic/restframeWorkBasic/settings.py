@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'myprofile',
 
     'restpost',
+    'restprofile',
 
     'rest_framework',
     'rest_framework.authtoken',
